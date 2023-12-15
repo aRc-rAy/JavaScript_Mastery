@@ -109,3 +109,69 @@ form.addEventListener("submit", (e) => {
 	previousGuess.innerHTML = `${arr.join()}`;
 });
 ```
+
+## Project 5
+
+```javascript
+const insert = document.querySelector("#insert");
+
+const html = document.querySelector("html");
+
+window.addEventListener("keydown", (e) => {
+	insert.innerHTML = `
+    <div class='color'>
+    <table>
+  <tr>
+    <th>Key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+    <td>${e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+ 
+</table>
+    </div>
+   `;
+});
+```
+
+## Project 6
+
+```javascript
+const start = document.querySelector("#start");
+const stop = document.querySelector("#stop");
+const body = document.querySelector("body");
+
+let TimerId;
+
+function getRandomColor() {
+	var letters = "0123456789ABCDEF";
+	var color = "#";
+	for (var i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
+const startTimer = () => {
+	clearInterval(TimerId);
+	TimerId = setInterval(() => {
+		body.style.backgroundColor = getRandomColor();
+	}, 1000);
+};
+
+const stopTimer = () => {
+	if (TimerId) clearInterval(TimerId);
+};
+
+start.addEventListener("click", () => {
+	startTimer();
+});
+
+stop.addEventListener("click", () => {
+	stopTimer();
+});
+```
